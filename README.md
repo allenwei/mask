@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/allenwei/mask.svg)](https://travis-ci.org/allenwei/mask)
+[![Code Climate](https://codeclimate.com/github/allenwei/mask/badges/gpa.svg)](https://codeclimate.com/github/allenwei/mask)
+
 # Mask
 
 `Mask` is a protocol of micro service APIs.
