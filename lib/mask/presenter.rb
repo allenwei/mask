@@ -48,16 +48,22 @@ module Mask
       def from_hash(hash)
         self.mask_properties.each do |property|
           value = hash[property.name.to_sym] || hash[property.name.to_s]
-          if value && property.klass
-            object = property.klass.new
-            object.extend property.presenter
-            object.from_hash(value)
-            self.send("#{property.name.to_sym}=", object)
+          if value && value.kind_of?(Hash)
+            self.send("#{property.name.to_sym}=", associated_object_for(value, property))
           else
             self.send("#{property.name.to_sym}=", value) if value
           end
         end
       end
+
+      private 
+      def associated_object_for(hash, property)
+        object = property.klass.new
+        object.extend property.presenter
+        object.from_hash(hash)
+        object
+      end
+
     end
   end
 end
