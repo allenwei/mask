@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/allenwei/mask.svg)](https://travis-ci.org/allenwei/mask)
 # Mask
 
 `Mask` is a protocol of micro service APIs.
