@@ -9,7 +9,7 @@ describe Mask::Presenter do
         book.title = "The Well-Grounded Rubyist"
         book.author = "David A. Black"
         book.extend(BookPresenter)
-        expect(book.to_hash).to eq({"title": "The Well-Grounded Rubyist", "author": "David A. Black" })
+        expect(book.to_hash).to eq({title: "The Well-Grounded Rubyist", author: "David A. Black" })
       end
     end
 
@@ -22,14 +22,14 @@ describe Mask::Presenter do
         author.twitter = "@david_a_black"
         book.author = author
         book.extend(BookWithAuthorPresenter)
-        expect(book.to_hash).to eq({"title": "The Well-Grounded Rubyist", "author": {"name": "David A. Black", "twitter": "@david_a_black" }})
+        expect(book.to_hash).to eq({title: "The Well-Grounded Rubyist", author: {name: "David A. Black", twitter: "@david_a_black" }})
       end
     end
   end
 
   describe "#from_hash" do
     it 'generate object from hash' do
-      book_data = {"title": "The Well-Grounded Rubyist", "author": "David A. Black" }
+      book_data = {title: "The Well-Grounded Rubyist", author: "David A. Black" }
       book = Book.new
       book.extend(BookPresenter)
       book.from_hash(book_data)
@@ -38,7 +38,7 @@ describe Mask::Presenter do
     end
 
     it 'generate assoication object from hash' do
-      book_data = {"title": "The Well-Grounded Rubyist", "author": {"name": "David A. Black", "twitter": "@david_a_black" }}
+      book_data = {title: "The Well-Grounded Rubyist", author: {name: "David A. Black", twitter: "@david_a_black" }}
       book = Book.new
       book.extend(BookWithAuthorPresenter)
       book.from_hash(book_data)
